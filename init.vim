@@ -207,3 +207,13 @@ augroup java_abbrev
   autocmd!
   autocmd FileType java :iabbrev <buffer> cs CompletionStage
 augroup END
+
+
+onoremap in( :<c-u>normal! f(vi(<cr> 
+onoremap il( :<c-u>normal! F)vi(<cr> 
+onoremap on( :<c-u>normal! f(va)<cr> 
+onoremap ol( :<c-u>normal! F)va(<cr> 
+onoremap in{ :<c-u>normal! f{vi}<cr> 
+onoremap il{ :<c-u>normal! F}vi{<cr> 
+onoremap on{ :<c-u>normal! f{va}<cr> 
+onoremap ol{ :<c-u>normal! F}va{<cr> 
