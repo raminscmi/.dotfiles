@@ -6,13 +6,13 @@ set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
-set nu
-set nowrap
+let &nu = 1
+let &wrap = 1
 set smartcase
 set noswapfile
 set nobackup
+let &relativenumber=1
 set incsearch
-set relativenumber
 set scrolloff=8
 set colorcolumn=80
 set signcolumn=yes
@@ -75,7 +75,7 @@ nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>m :MaximizerToggle<CR>
-
+nnoremap <leader>sp :execute "rightbelow vsplit " . bufname('#')<CR>
 " }}}
 " Git {{{
 " Sweet Sweet FuGITive
@@ -98,6 +98,7 @@ nmap <silent> cl <Plug>(coc-codelens-action)
 nmap <silent> ne <Plug>(coc-diagnostic-next-error)
 nmap <silent> re <Plug>(coc-rename)
 nmap <silent> la <Plug>(coc-codeaction-cursor)
+nmap <leader>cc :CocCommand java.workspace.compile<CR>
 
 nmap <silent> dl <Plug>VimspectorStepInto
 nmap <silent> dj <Plug>VimspectorStepOver
@@ -123,7 +124,7 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nmap <silent> run :CocList mainClassListRun<CR>
+nmap <leader>run :CocList mainClassListRun<CR>
 nnoremap <Leader>d :CocCommand java.debug.debugJavaFile<CR>
 " }}}
 
@@ -148,6 +149,9 @@ nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap - ddp
 nnoremap _ ddkP
 inoremap jk <esc>
+" following map when undo will bring back 2 lines in one go. So rather it
+" should be without normal
+nnoremap <leader>d :normal! dddd<CR>
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 " autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     " \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
@@ -217,3 +221,9 @@ onoremap in{ :<c-u>normal! f{vi}<cr>
 onoremap il{ :<c-u>normal! F}vi{<cr> 
 onoremap on{ :<c-u>normal! f{va}<cr> 
 onoremap ol{ :<c-u>normal! F}va{<cr> 
+
+
+
+nnoremap <leader>w :match Error /\s\+$/<CR>
+nnoremap <leader>W :match none<CR>
+nnoremap <leader>nh :noh<CR>
