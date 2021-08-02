@@ -163,8 +163,6 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 " Vimscript file settings ---------------------- {{{
 augroup filetype_vim
